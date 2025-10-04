@@ -1,0 +1,26 @@
+<p-table [value]="coins">
+  <ng-template #header>
+    <tr>
+      <th>#</th>
+      <th>Coin</th>
+      <th>Price</th>
+      <th>1h</th>
+      <th>24h</th>
+      <th>7d</th>
+      <th>24h Volume</th>
+      <th>Market Cap</th>
+    </tr>
+  </ng-template>
+  <ng-template #body let-coins>
+    <tr>
+      <td>{{coins.market_cap_rank}}</td>
+      <td><img [src]="coins.image" alt="Symbol" width="30" /></td>
+      <td>{{coins.current_price | currency: "USD"}}</td>
+      <td>{{coins.price_change_percentage_1h_in_currency | number : '1.1-1'}}%</td>
+      <td>{{coins.price_change_percentage_24h_in_currency | number : '1.1-1'}}%</td>
+      <td>{{coins.price_change_percentage_7d_in_currency | number : '1.1-1'}}%</td>
+      <td>{{coins.total_volume | currency: "USD" : 'symbol' : '1.0-0'}}</td>
+      <td>{{coins.market_cap | currency: "USD" : 'symbol' : '1.0-0'}}</td>
+    </tr>
+  </ng-template>
+</p-table>
