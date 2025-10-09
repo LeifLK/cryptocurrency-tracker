@@ -1,3 +1,4 @@
+// Warum bekomme ich keine typescript errors, dieses interface ist nicht vollständig und es funktioniert trotzdem???
 export interface Coin {
     id: string;
     symbol: string;

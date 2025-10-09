@@ -1,26 +1,71 @@
 <p-table [value]="coins">
   <ng-template #header>
     <tr>
-      <th>#</th>
-      <th>Coin</th>
-      <th>Price</th>
-      <th>1h</th>
-      <th>24h</th>
-      <th>7d</th>
-      <th>24h Volume</th>
-      <th>Market Cap</th>
+      <th pSortableColumn="market_cap_rank">
+        <div>
+          #
+          <p-sortIcon field="market_cap_rank" />
+        </div>
+      </th>
+      <th pSortableColumn="id">
+        <div>
+          Coin
+          <p-sortIcon field="id" />
+        </div>
+      </th>
+      <th pSortableColumn="current_price">
+        <div>
+          Price
+          <p-sortIcon field="current_price" />
+        </div>
+      </th>
+      <th pSortableColumn="price_change_percentage_1h_in_currency">
+        <div>
+          1h
+          <p-sortIcon field="price_change_percentage_1h_in_currency" />
+        </div>
+      </th>
+      <th pSortableColumn="price_change_percentage_24h_in_currency">
+        <div>
+          24h
+          <p-sortIcon field="price_change_percentage_24h_in_currency" />
+        </div>
+      </th>
+      <th pSortableColumn="price_change_percentage_7d_in_currency">
+        <div>
+          7d
+          <p-sortIcon field="price_change_percentage_7d_in_currency" />
+        </div>
+      </th>
+      <th pSortableColumn="total_volume">
+        <div>
+          24h Volume
+          <p-sortIcon field="total_volume" />
+        </div>
+      </th>
+      <th pSortableColumn="market_cap">
+        <div>
+          Market Cap
+          <p-sortIcon field="market_cap" />
+        </div>
+      </th>
     </tr>
   </ng-template>
-  <ng-template #body let-coins>
+  <ng-template #body let-coin>
     <tr>
-      <td>{{coins.market_cap_rank}}</td>
-      <td><img [src]="coins.image" alt="Symbol" width="30" /></td>
-      <td>{{coins.current_price | currency: "USD"}}</td>
-      <td>{{coins.price_change_percentage_1h_in_currency | number : '1.1-1'}}%</td>
-      <td>{{coins.price_change_percentage_24h_in_currency | number : '1.1-1'}}%</td>
-      <td>{{coins.price_change_percentage_7d_in_currency | number : '1.1-1'}}%</td>
-      <td>{{coins.total_volume | currency: "USD" : 'symbol' : '1.0-0'}}</td>
-      <td>{{coins.market_cap | currency: "USD" : 'symbol' : '1.0-0'}}</td>
+      <td>{{coin .market_cap_rank}}</td>
+      <td>
+        <div class="coin-cell">
+          <img [src]="coin.image" alt="Symbol" />
+          {{coin.name}}
+        </div>
+      </td>
+      <td>{{coin.current_price | currency: "USD"}}</td>
+      <td>{{coin.price_change_percentage_1h_in_currency | number : '1.1-1'}}%</td>
+      <td>{{coin.price_change_percentage_24h_in_currency | number : '1.1-1'}}%</td>
+      <td>{{coin.price_change_percentage_7d_in_currency | number : '1.1-1'}}%</td>
+      <td>{{coin.total_volume | currency: "USD" : 'symbol' : '1.0-0'}}</td>
+      <td>{{coin.market_cap | currency: "USD" : 'symbol' : '1.0-0'}}</td>
     </tr>
   </ng-template>
 </p-table>
